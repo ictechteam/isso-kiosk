@@ -1,0 +1,14 @@
+img.logo{
+    width:40%; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto; 
+    padding-top: 5px; 
+   
+  }
+
+div.top {
+    background-color: fffff;     
+}
+

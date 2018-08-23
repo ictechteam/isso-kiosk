@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false, 
+  firebase: {
+  apiKey: "AIzaSyDd2-jUcLlqZ5417rck59ID39i0iKnyz04",
+  authDomain: "kiosk-isso.firebaseapp.com",
+  databaseURL: "https://kiosk-isso.firebaseio.com",
+  projectId: "kiosk-isso",
+  storageBucket: "kiosk-isso.appspot.com",
+  messagingSenderId: "540566962161"
+  }
 };
 
 /*

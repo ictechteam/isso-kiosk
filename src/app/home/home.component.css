@@ -1,0 +1,28 @@
+div.col.s12 {
+    background-color: #C75B12; 
+    height: 500px;
+    text-align: center; 
+   
+  }
+
+  div.card {
+    background-color:#008542; 
+
+  }
+  
+  h3 {
+      text-align: left; 
+      color: white; 
+      
+  }
+
+  div.col.s6.offset-s6 {
+      
+    padding-right: 15em;
+  }
+
+
+
+
+
+  
