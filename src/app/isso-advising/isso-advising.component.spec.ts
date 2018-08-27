@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QlessWindowComponent } from './qless-window.component';
+import { IssoAdvisingComponent } from './isso-advising.component';
 
-describe('QlessWindowComponent', () => {
-  let component: QlessWindowComponent;
-  let fixture: ComponentFixture<QlessWindowComponent>;
+describe('IssoAdvisingComponent', () => {
+  let component: IssoAdvisingComponent;
+  let fixture: ComponentFixture<IssoAdvisingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QlessWindowComponent ]
+      declarations: [ IssoAdvisingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QlessWindowComponent);
+    fixture = TestBed.createComponent(IssoAdvisingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

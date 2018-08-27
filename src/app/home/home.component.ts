@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   showExpress:     boolean = false; 
   showPick:        boolean = false; 
   showEA:          boolean = false; 
+  expressMessage: any; 
   
   
   today: number = Date.now(); 
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.displayExpress(); 
   }
 
   selectOnKiosk(x) {
@@ -49,11 +51,11 @@ export class HomeComponent implements OnInit {
  walkinexpresslogic() {
    console.log(moment().format('dddd')); 
    console.log(moment().format("1:00 PM")); 
-  console.log( this.displayWalking() + "AND" + this.displayExpress()); 
+  console.log( this.displayWalkin() + "AND" + this.displayExpress()); 
  
   }
 
-  displayWalking(){
+  displayWalkin(){
 
   var betweenMondFriday = moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT') ); 
   var isTime = moment().isBetween(moment('Monday', 'dddd'), moment('Friday', 'dddd')); 
@@ -64,8 +66,9 @@ export class HomeComponent implements OnInit {
   }
 
   displayExpress() {
-    
+  
     var betweenMondFriday = moment().isBetween(moment('Monday', 'dddd'), moment('Friday', 'dddd')); 
+    this.expressMessage="Please see schedule on our website to view express advising."
     
     if(betweenMondFriday = true) {
       
@@ -73,16 +76,21 @@ export class HomeComponent implements OnInit {
       console.log(today); 
         
       switch(today){
-       case 'Monday': { return  moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT')); }
+       case 'Monday': { this.expressMessage = '<h3>Monday 1pm - 4:45pm</h3>'
+                        return  moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT')); }
       
-       case 'Tuesday': { return moment().isBetween(moment('09:00', 'LT'), moment('11:45', 'LT')); }      
+       case 'Tuesday': { this.expressMessage = '<h3>Tuesday 9am - 11:45am</h3>'
+                        return moment().isBetween(moment('09:00', 'LT'), moment('11:45', 'LT')); }      
 
-       case 'Thursday': { return moment().isBetween(moment('09:00', 'LT'), moment('11:45', 'LT'))
+       case 'Thursday': { this.expressMessage = '<h3>Thursday 9am - 11:45am and 1pm - 4:45pm</h3>'
+                          return moment().isBetween(moment('09:00', 'LT'), moment('11:45', 'LT'))
                           ||     moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT'));}
 
-       case 'Friday': {return moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT'))}
+       case 'Friday': { this.expressMessage = '<h3>Friday 1pm - 4:45pm</h3>'
+                        return moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT'))}
 
-       case 'Wednesday': { return false; }
+       case 'Wednesday': { this.expressMessage = '<h3>Wednesday, no express advising today</h3>'
+                           return false; }
       }
     }
 

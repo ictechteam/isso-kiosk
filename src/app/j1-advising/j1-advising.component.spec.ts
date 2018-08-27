@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SunapsisWindowComponent } from './sunapsis-window.component';
+import { J1AdvisingComponent } from './j1-advising.component';
 
-describe('SunapsisWindowComponent', () => {
-  let component: SunapsisWindowComponent;
-  let fixture: ComponentFixture<SunapsisWindowComponent>;
+describe('J1AdvisingComponent', () => {
+  let component: J1AdvisingComponent;
+  let fixture: ComponentFixture<J1AdvisingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SunapsisWindowComponent ]
+      declarations: [ J1AdvisingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SunapsisWindowComponent);
+    fixture = TestBed.createComponent(J1AdvisingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
