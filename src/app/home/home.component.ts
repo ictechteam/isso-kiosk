@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   displayWalkin(){
 
-  var betweenMondFriday = moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT') ); 
+  var betweenMondFriday = moment().isBetween(moment('12:00', 'LT'), moment('16:45', 'LT') ); 
   var isTime = moment().isBetween(moment('Monday', 'dddd'), moment('Friday', 'dddd')); 
   
   //return betweenMondFriday && isTime; 
@@ -76,20 +76,20 @@ export class HomeComponent implements OnInit {
       console.log(today); 
         
       switch(today){
-       case 'Monday': { this.expressMessage = '<h3>Monday 1pm - 4:45pm</h3>'
-                        return  moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT')); }
+       case 'Monday': { this.expressMessage = '<h4>Monday 1pm - 4:45pm</h4>'
+                        return  moment().isBetween(moment('12:30', 'LT'), moment('16:45', 'LT')); }
       
-       case 'Tuesday': { this.expressMessage = '<h3>Tuesday 9am - 11:45am</h3>'
+       case 'Tuesday': { this.expressMessage = '<h4>Tuesday 9am - 11:45am</h4>'
                         return moment().isBetween(moment('09:00', 'LT'), moment('11:45', 'LT')); }      
 
-       case 'Thursday': { this.expressMessage = '<h3>Thursday 9am - 11:45am and 1pm - 4:45pm</h3>'
+       case 'Thursday': { this.expressMessage = '<h4>Thursday 9am - 11:45am and 1pm - 4:45pm</h4>'
                           return moment().isBetween(moment('09:00', 'LT'), moment('11:45', 'LT'))
                           ||     moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT'));}
 
-       case 'Friday': { this.expressMessage = '<h3>Friday 1pm - 4:45pm</h3>'
+       case 'Friday': { this.expressMessage = '<h4>Friday 1pm - 4:45pm</h4>'
                         return moment().isBetween(moment('13:00', 'LT'), moment('16:45', 'LT'))}
 
-       case 'Wednesday': { this.expressMessage = '<h3>Wednesday, no express advising today</h3>'
+       case 'Wednesday': { this.expressMessage = '<h4>Wednesday, no express advising today</h4>'
                            return false; }
       }
     }
