@@ -61,8 +61,8 @@ export class HomeComponent implements OnInit {
   var betweenMondFriday = moment().isBetween(moment('12:00', 'LT'), moment('16:45', 'LT') ); 
   var isTime = moment().isBetween(moment('Monday', 'dddd'), moment('Friday', 'dddd')); 
   
-  //return betweenMondFriday && isTime; 
-  return false && false; 
+  return betweenMondFriday && isTime; 
+   
 
   }
 
