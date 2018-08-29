@@ -4,6 +4,14 @@ div.col.s12 {
     text-align: center; 
    
   }
+  div.col.s12.small{
+    background-color: #C75B12; 
+    height: 10px;
+    
+  }
+    div.col.s12.small h3 {
+    text-align: center; 
+    }
 
   div.card {
     background-color:#008542; 
