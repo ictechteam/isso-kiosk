@@ -4,6 +4,14 @@ div.col.s12 {
     text-align: center; 
    
   }
+  div.col.s12.small{
+    background-color: #C75B12; 
+    height: 10px;
+    
+  }
+    div.col.s12.small h3 {
+    text-align: center; 
+    }
 
   div.card {
     background-color:#008542; 
@@ -13,7 +21,11 @@ div.col.s12 {
   h3, h4 {
       text-align: left; 
       color: white; 
-      
+      margin-top: 0em; 
+  }
+  h1 {
+    text-align: center; 
+    color: white
   }
 
   div.col.s6.offset-s6 {
@@ -21,6 +33,11 @@ div.col.s12 {
     padding-right: 15em;
   }
 
+  div.col.s6.border {
+    border-right: 6px solid white;
+    height: 400px;
+    margin-left: -10px;
+}
 
 
 
