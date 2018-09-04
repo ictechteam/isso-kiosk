@@ -82,12 +82,15 @@
 
       <div class="col s6">
         <h3>Walk-in Advising schedule for today. </h3>
-        <h4> Monday and Friday 1pm - 4:45pm </h4>
+        <h4  [innerHTML] ='walkinTime'></h4>
+        <h4  [innerHTML] ='walkinNotification'></h4>
+        
+        
       </div>
 
-
+       
       <div class="col s12 small" *ngIf="displayExpress() || displayWalkin()"  > 
-        <h3>Please text "utd iss" to 310-740-7906 to be added in the queue.</h3>
+        <h2>Please text "utd iss" or "utdal intl" to 310-740-7906 to be added in the queue.</h2>
       </div>
 
 

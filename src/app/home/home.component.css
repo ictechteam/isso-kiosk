@@ -23,7 +23,7 @@ div.col.s12 {
       color: white; 
       margin-top: 0em; 
   }
-  h1 {
+  h1, h2 {
     text-align: center; 
     color: white
   }
@@ -33,11 +33,11 @@ div.col.s12 {
     padding-right: 15em;
   }
 
-  div.col.s6.border {
+  /* div.col.s6.border {
     border-right: 6px solid white;
     height: 400px;
     margin-left: -10px;
-}
+} */
 
 
 
