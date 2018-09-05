@@ -114,10 +114,26 @@ export class HomeComponent implements OnInit {
 
                         return moment().isBetween(moment('08:45', 'LT'), moment('11:45', 'LT')); }      
 
-       case 'Thursday': { this.expressTime = '<h4> 9am - 11:45am and 1pm - 4:45pm</h4>'
+       case 'Thursday': {  this.expressTime = '<h4> 9am - 11:45am and 1pm - 4:45pm</h4>'
+                          
                           if( moment().isBefore(moment('8:45', 'LT')) ) {
-                              this.expressNotification = '<h4>Express check in starts at 8:45am and 12:45pm</h4>';
+                            this.expressNotification = '<h4>Express check in starts at 8:45am</h4>';
                           } 
+
+                          if(    moment().isBetween(moment('08:45', 'LT'), moment('11:45', 'LT'))
+                          ||     moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'))) {
+                            this.expressNotification = '<h4>Express queue is now open!</h4>'
+                          }
+
+                          if( moment().isBetween(moment('11:45', 'LT'),moment('12:45', 'LT'))   ) { 
+                            this.expressNotification = '<h4>Express check in starts at 12:45pm</h4>';
+                          }
+
+                          if(moment().isAfter(moment('16:45'))) {
+                            this.expressNotification = schedule; 
+                            this.expressTime= '<h4>No express advising at this time</h4>'
+                          }
+
                           
                           return moment().isBetween(moment('08:45', 'LT'), moment('11:45', 'LT'))
                           ||     moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));}
@@ -129,9 +145,9 @@ export class HomeComponent implements OnInit {
 
                         return moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'))}
 
-       case 'Wednesday': {  this.expressNotification = schedule; 
+       case 'Wednesday': {   this.expressNotification = schedule; 
                              this.expressTime = '<h4>No express advising at this time</h4>'
-                           return false; 
+                              return false; 
                           }
       }
     }
