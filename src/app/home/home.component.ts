@@ -66,14 +66,31 @@ export class HomeComponent implements OnInit {
   displayWalkin() {
 
     var today = moment().format('dddd');
+    var schedule = "<h4><b>Monday</b> and <b>Friday</b>, 1pm - 4:45pm</h4>"
+    this.walkinTime = "<h4>No walk-in advising at this time</h4>"
+    this.walkinNotification = schedule; 
 
     if (today === 'Monday' || today === 'Friday') {
 
+      this.walkinTime ='<h4> 1pm - 4:45pm</h4>'
+
+      if (moment().isBefore(moment('12:45', 'LT'))) {
+      this.walkinNotification ='<h4>Walk-in check in starts at 12:45pm</h4>' }
+
+      if (moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'))){
+        this.walkinNotification = '<h4>Walk-in queue is now open!</h4>'
+      }
+
+      if(moment().isAfter(moment('16:45'))){
+        this.walkinNotification = schedule; 
+        this.walkinTime = "<h4>No walk-in advising at this time</h4>"
+      }
+
       return moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));
+    
     }
 
-    this.walkinNotification = "<h4><b>Monday</b> and <b>Friday</b>, 1pm - 4:45pm</h4>"
-    this.walkinTime = "<h4>No walk-in advising at this time</h4>"
+    
     return false;
   }
 
@@ -87,7 +104,7 @@ export class HomeComponent implements OnInit {
 
       var today = moment().format('dddd');
       console.log(today);
-
+    
       switch (today) {
         case 'Monday': {
         this.expressTime = '<h4> 1pm - 4:45pm</h4>';
@@ -102,7 +119,6 @@ export class HomeComponent implements OnInit {
           if (moment().isAfter(moment('16:45'))) {
             this.expressNotification = schedule;
             this.expressTime = '<h4>No express advising at this time</h4>'
-
           }
 
           return moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));
