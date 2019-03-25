@@ -65,30 +65,66 @@ export class HomeComponent implements OnInit {
 
   displayWalkin() {
 
-    var today = moment().format('dddd');
-    var schedule = "<h4><b>Monday</b> and <b>Friday</b>, 1pm - 4:45pm</h4>"
+    var betweenMondayFriday = moment().isBetween(moment('Monday', 'dddd'), moment('Friday', 'dddd'));
+    var schedule = "<h4><b>Monday</b> and <b>Friday</b>, 1pm - 4:45pm</h4> <h4><b>Tuesday</b> and <b>Thursday</b> 9am-11:45am</h4>"
     this.walkinTime = "<h4>No walk-in advising at this time</h4>"
-    this.walkinNotification = schedule; 
-
-    if (today === 'Monday' || today === 'Friday') {
-
-      this.walkinTime ='<h4> 1pm - 4:45pm</h4>'
-
-      if (moment().isBefore(moment('12:45', 'LT'))) {
-      this.walkinNotification ='<h4>Walk-in check in starts at 12:45pm</h4>' }
-
-      if (moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'))){
-        this.walkinNotification = '<h4>Walk-in queue is now open!</h4>'
-      }
-
-      if(moment().isAfter(moment('16:45'))){
-        this.walkinNotification = schedule; 
-        this.walkinTime = "<h4>No walk-in advising at this time</h4>"
-      }
-
-      return moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));
     
+
+    if(betweenMondayFriday = true){
+
+      var today = moment().format('dddd');
+
+     // var testday = "Thursday"
+      //switch (testday) {
+      
+      switch(today) {
+        case 'Monday': case 'Friday': {
+
+          this.walkinTime ='<h4> 1pm - 4:45pm</h4>'
+
+          if (moment().isBefore(moment('12:45', 'LT'))) {
+          this.walkinNotification ='<h4>Walk-in check in starts at 12:45pm</h4>' }
+    
+          if (moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'))){
+            this.walkinNotification = '<h4>Walk-in queue is now open!</h4>'
+          }
+    
+          if(moment().isAfter(moment('16:45', 'LT'))){
+            this.walkinNotification = schedule; 
+            this.walkinTime = "<h4>No walk-in advising at this time</h4>"
+          }
+    
+          return moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));
+        }
+
+        case 'Tuesday': case 'Thursday': {
+
+          this.walkinTime ='<h4> 9am - 11:45am</h4>'
+
+          if (moment().isBefore(moment('08:45', 'LT'))) {
+          this.walkinNotification ='<h4>Walk-in check in starts at 08:45pm</h4>' }
+    
+          if (moment().isBetween(moment('08:45', 'LT'), moment('11:45', 'LT'))){
+            this.walkinNotification = '<h4>Walk-in queue is now open!</h4>'
+          }
+    
+          if(moment().isAfter(moment('11:45', 'LT'))){
+            this.walkinNotification = schedule; 
+            this.walkinTime = "<h4>No walk-in advising at this time</h4>"
+          }
+    
+          return moment().isBetween(moment('8:45', 'LT'), moment('11:45', 'LT'));
+        }
+
+        case 'Wednesday': {
+          this.walkinNotification = schedule; 
+          this.walkinTime = "<h4>No walk-in advising at this time</h4>"
+          return false; 
+        }
+      }
+
     }
+   
 
     
     return false;
@@ -97,16 +133,17 @@ export class HomeComponent implements OnInit {
   displayExpress() {
 
     var betweenMondFriday = moment().isBetween(moment('Monday', 'dddd'), moment('Friday', 'dddd'));
-    var schedule = '<h4><b>Monday</b> 1pm - 4:45pm, <b>Tuesday</b> 9am-11:45am</h4><h4><b>Thursday</b> 9am-11:45am and 1pm-4:45pm</h4><h4><b>Friday</b> 1pm-4:45pm</h4>'
+    var schedule = '<h4><b>Monday</b> and <b>Friday</b> 1pm - 4:45pm</h4> <h4><b>Tuesday</b> and <b>Thursday</b> 9am-11:45am</h4>'
     this.expressTime = '<h4>No express advising at this time</h4>'
 
     if (betweenMondFriday = true) {
 
       var today = moment().format('dddd');
-      console.log(today);
-    
+      //var testday = "Thursday"
+   
+      //switch (testday) {
       switch (today) {
-        case 'Monday': {
+        case 'Monday': case 'Friday': {
         this.expressTime = '<h4> 1pm - 4:45pm</h4>';
           if (moment().isBefore(moment('12:45', 'LT'))) {
             this.expressNotification = '<h4>Express check in starts at 12:45pm</h4>';
@@ -116,7 +153,7 @@ export class HomeComponent implements OnInit {
             this.expressNotification = '<h4>Express queue is now open!</h4>';
           }
 
-          if (moment().isAfter(moment('16:45'))) {
+          if (moment().isAfter(moment('16:45', 'LT'))) {
             this.expressNotification = schedule;
             this.expressTime = '<h4>No express advising at this time</h4>'
           }
@@ -124,7 +161,7 @@ export class HomeComponent implements OnInit {
           return moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));
         }
 
-        case 'Tuesday': {
+        case 'Tuesday': case 'Thursday': {
         this.expressTime = '<h4> 9am - 11:45am</h4>';
 
           if (moment().isBefore(moment('8:45', 'LT'))) {
@@ -140,56 +177,11 @@ export class HomeComponent implements OnInit {
             this.expressTime = '<h4>No express advising at this time</h4>'
           }
 
-
-
           return moment().isBetween(moment('08:45', 'LT'), moment('11:45', 'LT'));
         }
 
-        case 'Thursday': {
-        this.expressTime = '<h4> 9am - 11:45am and 1pm - 4:45pm</h4>'
 
-          if (moment().isBefore(moment('8:45', 'LT'))) {
-            this.expressNotification = '<h4>Express check in starts at 8:45am</h4>';
-          }
-
-          if (moment().isBetween(moment('08:45', 'LT'), moment('11:45', 'LT'))
-            || moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'))) {
-            this.expressNotification = '<h4>Express queue is now open!</h4>'
-          }
-
-          if (moment().isBetween(moment('11:45', 'LT'), moment('12:45', 'LT'))) {
-            this.expressNotification = '<h4>Express check in starts at 12:45pm</h4>';
-          }
-
-          if (moment().isAfter(moment('16:45'))) {
-            this.expressNotification = schedule;
-            this.expressTime = '<h4>No express advising at this time</h4>'
-          }
-
-
-          return moment().isBetween(moment('08:45', 'LT'), moment('11:45', 'LT'))
-            || moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));
-        }
-
-        case 'Friday': {
-                         this.expressTime = '<h4> 1pm - 4:45pm</h4>';
-                         if (moment().isBefore(moment('12:45', 'LT'))) {
-                            this.expressNotification = '<h4>Express check in starts at 12:45pm</h4>';
-                          }
-
-                         if (moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'))) {
-                            this.expressNotification = '<h4>Express queue is now open!</h4>';
-                         }
-
-                        if (moment().isAfter(moment('16:45'))) {
-                           this.expressNotification = schedule;
-                           this.expressTime = '<h4>No express advising at this time</h4>'
-                        }
-
-          return moment().isBetween(moment('12:45', 'LT'), moment('16:45', 'LT'));
-        }
-
-        case 'Wednesday': {
+       case 'Wednesday': {
         this.expressNotification = schedule;
           this.expressTime = '<h4>No express advising at this time</h4>'
           return false;
