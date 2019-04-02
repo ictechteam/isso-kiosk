@@ -17,11 +17,12 @@ import { HomeComponent } from './home/home.component';
 import { SafePipe } from './safe.pipe';
 import { J1AdvisingComponent } from './j1-advising/j1-advising.component';
 import { IssoAdvisingComponent } from './isso-advising/isso-advising.component';
+import { FrontcheckinComponent } from './frontcheckin/frontcheckin.component';
 
 const appRoutes: Routes =[
   { path: 'home', component: HomeComponent }, 
-  {path: 'j1', component: J1AdvisingComponent }, 
-  {path: 'advising', component: IssoAdvisingComponent}, 
+  { path:  'frontdeskcheckin', component: FrontcheckinComponent }, 
+  { path:  'advising', component: IssoAdvisingComponent}, 
   { path: '', redirectTo: 'home', pathMatch: 'full' }, 
   { path: '**', component: HomeComponent }
 ] 
@@ -32,7 +33,8 @@ const appRoutes: Routes =[
     HomeComponent,
     SafePipe,
     J1AdvisingComponent,
-    IssoAdvisingComponent
+    IssoAdvisingComponent,
+    FrontcheckinComponent
   ],
   imports: [
     BrowserModule, 
